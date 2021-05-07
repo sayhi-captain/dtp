@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.josh.threadpool</groupId>
+    <artifactId>dynamic-thread-pool</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+    <name>dynamic-thread-pool</name>
+
+    <properties>
+        <revision>1.0.0-SNAPSHOT</revision>
+
+        <mybatis-starter.version>1.3.1</mybatis-starter.version>
+        <spring.version>5.3.2</spring.version>
+        <spring-boot.version>2.4.1</spring-boot.version>
+        <lombok.version>1.18.16</lombok.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <junit.version>4.13.1</junit.version>
+        <netty-all.version>4.1.9.Final</netty-all.version>
+        <commons-langs.version>3.8.1</commons-langs.version>
+
+        <!-- for maven compiler plugin -->
+        <java_source_version>1.8</java_source_version>
+        <java_target_version>1.8</java_target_version>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <!-- Build args -->
+        <skip_maven_deploy>false</skip_maven_deploy>
+        <!-- Maven plugins -->
+        <maven_compiler_version>3.8.1</maven_compiler_version>
+        <maven_deploy_version>2.8.2</maven_deploy_version>
+        <maven_source_version>3.2.1</maven_source_version>
+    </properties>
+
+    <modules>
+        <module>dynamic-thread-pool-admin</module>
+        <module>dynamic-thread-pool-client</module>
+        <module>dynamic-thread-pool-core</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- 二方包 -->
+            <dependency>
+                <groupId>com.josh.threadpool</groupId>
+                <artifactId>dynamic-thread-pool-core</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <!-- 三方包 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-autoconfigure</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot.version}</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>junit-jupiter-api</artifactId>
+                        <groupId>org.junit.jupiter</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>slf4j-api</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty-all.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-langs.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java_source_version}</source> <!-- or higher, depending on your project -->
+                    <target>${java_target_version}</target> <!-- or higher, depending on your project -->
+                    <compilerVersion>${java_source_version}</compilerVersion>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven_deploy_version}</version>
+                <configuration>
+                    <skip>${skip_maven_deploy}</skip>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven_source_version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
