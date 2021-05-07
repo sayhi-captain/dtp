@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.josh.dtp.repository.mapper.DtpLogMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.josh.dtp.repository.entity.DtpLog">
+        <id column="dtp_log_id" property="dtpLogId"/>
+        <result column="app_id" property="appId"/>
+        <result column="cluster_id" property="clusterId"/>
+        <result column="name" property="name"/>
+        <result column="ip" property="ip"/>
+        <result column="core_pool_size" property="corePoolSize"/>
+        <result column="maximum_pool_size" property="maximumPoolSize"/>
+        <result column="keep_alive_seconds" property="keepAliveSeconds"/>
+        <result column="active_count" property="activeCount"/>
+        <result column="completed_task_count" property="completedTaskCount"/>
+        <result column="queue_size" property="queueSize"/>
+        <result column="queue_remaining_capacity" property="queueRemainingCapacity"/>
+        <result column="largest_pool_size" property="largestPoolSize"/>
+        <result column="rejected_execution_count" property="rejectedExecutionCount"/>
+        <result column="pool_size" property="poolSize"/>
+        <result column="task_count" property="taskCount"/>
+        <result column="total_time" property="totalTime"/>
+        <result column="maximum_time" property="maximumTime"/>
+        <result column="log_time" property="logTime"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="created" property="created"/>
+        <result column="modified" property="modified"/>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.josh.dtp.repository.mapper.DtpMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.josh.dtp.repository.entity.Dtp">
+        <id column="dtp_id" property="dtpId"/>
+        <result column="app_id" property="appId"/>
+        <result column="cluster_id" property="clusterId"/>
+        <result column="title" property="title"/>
+        <result column="owner_name" property="ownerName"/>
+        <result column="alarm_email" property="alarmEmail"/>
+        <result column="open_alarm" property="openAlarm"/>
+        <result column="pool_alarm_threshold" property="poolAlarmThreshold"/>
+        <result column="queue_alarm_threshold" property="queueAlarmThreshold"/>
+        <result column="name" property="name"/>
+        <result column="core_pool_size" property="corePoolSize"/>
+        <result column="maximum_pool_size" property="maximumPoolSize"/>
+        <result column="keep_alive_seconds" property="keepAliveSeconds"/>
+        <result column="queue_capacity" property="queueCapacity"/>
+        <result column="queue_name" property="queueName"/>
+        <result column="rejected_execution_handler_name" property="rejectedExecutionHandlerName"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="created" property="created"/>
+        <result column="modified" property="modified"/>
+    </resultMap>
+
+</mapper>
